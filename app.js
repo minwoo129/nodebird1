@@ -67,14 +67,14 @@ app.use(session(sessionOption));
 app.use(passport.initialize());
 app.use(passport.session());
 
-const db = mysql.createConnection({
-    host: '127.0.0.1',
-    user: 'root',
-    password: process.env.SEQUELIZE_PASSWORD,
-    database: 'nodebird1',
-    port: '3306'
-});
-db.connect();
+// const db = mysql.createConnection({
+//     host: '127.0.0.1',
+//     user: 'root',
+//     password: process.env.SEQUELIZE_PASSWORD,
+//     database: 'nodebird1',
+//     port: '3306'
+// });
+// db.connect();
 
 app.use('/', pageRouter);
 app.use('/auth', authRouter);

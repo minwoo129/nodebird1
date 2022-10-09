@@ -2,11 +2,19 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const bodyParser = require('body-parser');
 
 const { Post, Hashtag } = require('../models');
 const { isLoggedIn } = require('./middlewares');
 
 const router = express.Router();
+
+router.use(
+    bodyParser.urlencoded({
+        extended: false
+    })
+);
+router.use(bodyParser.json());
 
 try {
     fs.readdirSync('uploads');

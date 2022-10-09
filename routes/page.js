@@ -1,8 +1,16 @@
 const express = require('express');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
 const { Post, User, Hashtag } = require('../models');
+const bodyParser = require('body-parser');
 
 const router = express.Router();
+
+router.use(
+    bodyParser.urlencoded({
+        extended: false
+    })
+);
+router.use(bodyParser.json());
 
 router.use((req, res, next) => {
     res.locals.user = req.user;

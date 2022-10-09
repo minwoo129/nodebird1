@@ -1,9 +1,16 @@
 const express = require('express');
-
+const bodyParser = require('body-parser');
 const { isLoggedIn } = require('./middlewares');
 const User = require('../models/user');
 
 const router = express.Router();
+
+router.use(
+    bodyParser.urlencoded({
+        extended: false
+    })
+);
+router.use(bodyParser.json());
 
 router.post('/:id/follow', isLoggedIn, async(req, res, next) => {
     try {
